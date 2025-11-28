@@ -157,6 +157,7 @@ a.active {
   justify-content: center;
   gap: 40px;
   margin-bottom: 60px;
+  position: relative;
 }
 
 .about-intro {
@@ -209,32 +210,43 @@ a.active {
   font-weight: bold;
   margin-bottom: 0.5em;
   color: #222;
+  max-width: 45%;
+  text-align: center;
+  padding: 2em 1em;
+  line-height: 1.6;
+  margin: 3em auto;
+  position: relative;
 }
 
 /* Floating Islands */
 .island {
   background: rgba(180, 180, 180, 0.35);
   border-radius: 24px;
-  box-shadow: 0 4px 24px 0 rgba(80,80,80,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(180, 180, 180, 0.5);
   padding: 1.2em 2em;
-  margin: 2em 0;
-  max-width: 600px;
+  margin: 3em 0;
+  max-width: 40%;
   min-width: 280px;
-  width: fit-content;
+  width: 40%;
   font-size: 1.15em;
   position: relative;
+  clear: both;
 }
+
 .island.left {
   float: left;
-  clear: left;
-  margin-left: 10vw;
   margin-right: auto;
+  margin-left: 0;
+  text-align: right;
 }
+
 .island.right {
   float: right;
-  clear: right;
-  margin-right: 10vw;
   margin-left: auto;
+  margin-right: 0;
+  text-align: left;
 }
 
 /* ------------------------------ */
@@ -332,6 +344,12 @@ section.project {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    max-width: 90%;
+    text-align: center;
+    clear: none;
+  }
+  main.about::before {
+    display: none;
   }
   .about-hero {
     flex-direction: column;
@@ -340,6 +358,9 @@ section.project {
     margin-right: 0;
     margin-bottom: 1em;
   }
+  .intro-quote {
+    max-width: 100%;
+  }
 }
 
 /* Clearfix for islands */
@@ -347,6 +368,26 @@ section.project {
   content: "";
   display: table;
   clear: both;
+}
+
+/* Timeline line container */
+main.about {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main.about::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent 0%, #333 10%, #333 90%, transparent 100%);
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
 }
 
 /* Contact Page Centering */
